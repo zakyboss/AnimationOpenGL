@@ -1,0 +1,7 @@
+build/
+output/*
+!output/.gitkeep
+*.exe
+*.o
+.vscode/
+.vs/
