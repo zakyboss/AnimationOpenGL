@@ -1,9 +1,9 @@
 #include "Scene1Park.h"
 #include "../algorithms/Circle.h"
-#include "../algorithms/Curve.h"
 #include "../algorithms/Ellipse.h"
 #include "../algorithms/Fill.h"
 #include "../algorithms/Line.h"
+#include "../objects/Flower.h"
 
 static void drawCloud(Canvas& c, int x, int y, int size) {
     fillEllipse(c, x, y, size, size / 2, Palette::Cloud);
@@ -28,15 +28,6 @@ static void drawBench(Canvas& c, int x, int y) {
     fillRect(c, x, y + 72, 160, 8, Palette::Wood);
     drawThickLine(c, x + 10, y, x + 10, y + 80, 6, Palette::Bark);
     drawThickLine(c, x + 150, y, x + 150, y + 80, 6, Palette::Bark);
-}
-
-static void drawFlower(Canvas& c, int x, int y, Color petal) {
-    drawQuadBezier(c, {x, y - 40}, {x - 12, y - 20}, {x, y}, Palette::GrassDark, 2);
-    for (int dx : {-7, 7})
-        fillCircle(c, x + dx, y, 6, petal);
-    for (int dy : {-7, 7})
-        fillCircle(c, x, y + dy, 6, petal);
-    fillCircle(c, x, y, 4, Palette::Yellow);
 }
 
 void drawParkBackground(Canvas& canvas) {
