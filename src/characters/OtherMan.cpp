@@ -10,11 +10,11 @@ namespace {
 
 const Proportions kProportions = [] {
     Proportions p;
-    p.legUpper = 64; p.legLower = 60;
-    p.torso = 98;
-    p.headRadius = 34;
+    p.legUpper = 58; p.legLower = 55;
+    p.torso = 90;
+    p.headRadius = 32;
     p.shoulderHalf = 36; p.hipHalf = 18;
-    p.armUpper = 52; p.armLower = 48;
+    p.armUpper = 48; p.armLower = 45;
     p.armRadius = 7.5f; p.legRadius = 9;
     return p;
 }();
@@ -60,8 +60,14 @@ Skeleton drawOtherMan(Canvas& canvas, int x, int y, Expression e, float scale, c
     drawNeck(canvas, sk, Palette::SkinLight);
     drawEars(canvas, sk, Palette::SkinLight);
     fillCircle(canvas, cx, cy, r, Palette::SkinLight);
+    if (pose.facingAway > 0.5f) {
+        // From behind: curls cover the whole back of the head
+        fillCircle(canvas, cx, cy + r / 10, r * 95 / 100, Palette::HairBrown);
+        drawCurlyHair(canvas, cx, cy, r);
+        return sk;
+    }
     drawCurlyHair(canvas, cx, cy, r);
-    drawFace(canvas, cx, cy, r, e, kFace);
+    drawFace(canvas, cx, cy, r, e, kFace, {pose.gazeX, pose.gazeY, pose.mouth, pose.blink});
     drawGlasses(canvas, cx, cy, r);
     return sk;
 }

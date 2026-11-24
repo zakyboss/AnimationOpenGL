@@ -7,12 +7,24 @@ enum Side { Left = 0, Right = 1 };
 
 // Joint angles in degrees. Shoulder and hip angles are measured from straight
 // down; positive values swing the limb towards screen right. Elbow and knee
-// angles are relative to the upper segment. Week 3 animates these values.
+// angles are relative to the upper segment. The animation blends these values.
 struct Pose {
     float shoulder[2] = {-8.0f, 8.0f};
     float elbow[2] = {0.0f, 0.0f};
     float hip[2] = {-3.0f, 3.0f};
     float knee[2] = {0.0f, 0.0f};
+    // 0 to 1: the knee raised towards the viewer (a step seen from the front or behind)
+    float lift[2] = {0.0f, 0.0f};
+
+    // How the body is held, besides the joint angles
+    float sit = 0.0f;         // 0 standing, 1 sitting (the thighs point at the viewer, so they are drawn shortened)
+    float facingAway = 0.0f;  // above 0.5 the character is seen from behind
+    float coverFace = 0.0f;   // 0 to 1: hands moving up over the face, for crying
+
+    // Face
+    float gazeX = 0.0f, gazeY = 0.0f;  // where the eyes look, -1 to 1 (left/down to right/up)
+    float mouth = 0.0f;                // above 0.3 the mouth is open (talking)
+    float blink = 0.0f;                // above 0.5 the eyes are shut
 };
 
 // Body measurements in pixels at scale 1.
@@ -31,6 +43,7 @@ struct Proportions {
 // attached to a hand.
 struct Skeleton {
     float scale = 1.0f;
+    float sit = 0.0f;  // copied from the pose, so the legs can be drawn seated
     Point pelvis, neckBase, headCenter;
     int headRadius = 0, armRadius = 0, legRadius = 0;
     Point shoulder[2], elbow[2], hand[2];

@@ -42,7 +42,7 @@ static void drawPicture(Canvas& c, int x, int y, int w, int h) {
                  Palette::GrassDark);
 }
 
-void drawHouseInterior(Canvas& canvas) {
+void drawHouseInterior(Canvas& canvas, bool doorOpen, bool evening) {
     const int w = canvas.width();
     const int h = canvas.height();
     const int floor = 210;
@@ -57,8 +57,13 @@ void drawHouseInterior(Canvas& canvas) {
     }
     fillRect(canvas, 0, floor, w, 16, Palette::Skirting);
 
-    drawWindow(canvas, 110, 340, 230, 230, true);
-    drawDoor(canvas, 1030, floor, 140, 320);
+    // In the evening the sky outside is dark and the lamp is on, glowing on the wall behind it
+    if (evening) {
+        fillEllipse(canvas, 420, floor + 330, 135, 100, lerp(Palette::WallInside, Palette::LampGlow, 0.35f));
+        fillEllipse(canvas, 420, floor + 330, 80, 62, lerp(Palette::WallInside, Palette::LampGlow, 0.6f));
+    }
+    drawWindow(canvas, 110, 340, 230, 230, true, evening ? Palette::EveningGlass : Palette::Glass);
+    drawDoor(canvas, 1030, floor, 140, 320, doorOpen);
     drawPicture(canvas, 560, 480, 170, 110);
     drawLamp(canvas, 420, floor);
     drawSofa(canvas, 470, floor + 10, 360);

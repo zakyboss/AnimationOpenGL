@@ -37,6 +37,13 @@ Skeleton drawBoyfriend(Canvas& canvas, int x, int y, Expression e, float scale, 
         drawArm(canvas, sk, side, Sleeve::Short, Palette::ShirtBlue, Palette::SkinDeep);
 
     drawNeck(canvas, sk, Palette::SkinDeep);
+    if (pose.facingAway > 0.5f) {
+        // From behind: the back of his head is all hair, with his ears showing
+        drawEars(canvas, sk, Palette::SkinDeep);
+        fillCircle(canvas, cx, cy + r * 4 / 100, r, Palette::HairBlack);
+        return sk;
+    }
+
     // Shirt collar
     int ny = sk.neckBase.y;
     scanlineFill(canvas, {{x - s(13), ny + s(2)}, {x, ny - s(12)}, {x - s(4), ny + s(2)}}, Palette::White);
@@ -46,6 +53,6 @@ Skeleton drawBoyfriend(Canvas& canvas, int x, int y, Expression e, float scale, 
     fillCircle(canvas, cx, cy + r * 9 / 100, r * 102 / 100, Palette::HairBlack);
     drawEars(canvas, sk, Palette::SkinDeep);
     fillEllipse(canvas, cx, cy - r * 5 / 100, r * 96 / 100, r * 93 / 100, Palette::SkinDeep);
-    drawFace(canvas, cx, cy, r, e, kFace);
+    drawFace(canvas, cx, cy, r, e, kFace, {pose.gazeX, pose.gazeY, pose.mouth, pose.blink});
     return sk;
 }

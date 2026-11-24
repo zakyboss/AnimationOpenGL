@@ -126,4 +126,42 @@ namespace Palette {
     constexpr Color Road       { 64,  64,  70};
     constexpr Color LampPost   { 48,  52,  58};
     constexpr Color LampLight  {255, 236, 160};
+
+    // Jacket, passers-by and street life
+    constexpr Color Jacket     {122,  84,  52};
+    constexpr Color JacketShade{ 92,  62,  36};
+    constexpr Color HairGrey   {175, 175, 180};
+    constexpr Color ShirtGreen { 70, 140,  90};
+    constexpr Color ShirtOrange{225, 130,  50};
+    constexpr Color ShirtWhite {236, 236, 240};
+    constexpr Color TopYellow  {240, 200,  70};
+    constexpr Color SkirtPurple{120,  70, 150};
+    constexpr Color CapRed     {200,  40,  45};
+    constexpr Color TrouserGrey{110, 110, 118};
+    constexpr Color Bird       { 50,  50,  60};
+    constexpr Color Leaf       {200, 140,  50};
+    constexpr Color Wind       {235, 240, 250};
+    constexpr Color CarRed     {175,  38,  45};
+    constexpr Color CarWindow  { 70,  92, 125};
+    constexpr Color Tyre       { 25,  25,  28};
+    constexpr Color Headlight  {255, 245, 200};
+    constexpr Color Beam       {105, 100,  85};
+    constexpr Color Cigarette  {240, 240, 235};
+    constexpr Color Ember      {255, 120,  40};
+    constexpr Color Smoke      {150, 150, 160};
+
+    // Fountain
+    constexpr Color Stone      {196, 190, 180};
+    constexpr Color StoneDark  {150, 145, 138};
+    constexpr Color Water      {110, 172, 222};
+    constexpr Color WaterLight {205, 232, 250};
+    constexpr Color BirdBrown  {125,  92,  62};
+    constexpr Color Beak       {240, 160,  40};
+
+    // Evening and night
+    constexpr Color Silhouette { 60,  40,  55};
+    constexpr Color EveningGlass{ 92,  78, 140};
+    constexpr Color LampGlow   {245, 215, 150};
+    constexpr Color Moon       {238, 236, 220};
+    constexpr Color Star       {240, 240, 255};
 }

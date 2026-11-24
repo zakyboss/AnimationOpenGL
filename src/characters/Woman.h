@@ -9,3 +9,6 @@ Skeleton drawWoman(Canvas& canvas, int x, int y, Expression e, float scale = 1.0
 
 // Just her head (hair, face, earrings), for close-ups and the expression sheet.
 void drawWomanHead(Canvas& canvas, int cx, int cy, int r, Expression e);
+
+// Her long hair on its own, for redrawing over a jacket when seen from behind.
+void drawWomanHairOver(Canvas& canvas, const Skeleton& sk);
